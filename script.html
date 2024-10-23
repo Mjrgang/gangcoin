@@ -1,0 +1,62 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const coin = document.getElementById('coin');
+    const coinBalance = document.getElementById('coin-balance');
+    const pages = document.querySelectorAll('.page');
+    let balance = parseInt(localStorage.getItem('coinBalance')) || 0;
+    let clickedLinks = new Set();
+
+    function saveState() {
+        localStorage.setItem('coinBalance', balance);
+    }
+
+    function updateBalance() {
+        coinBalance.innerHTML = `<strong>Coin Balance:</strong> <strong style="font-size: 24px;">${balance}</strong>`;
+    }
+
+    function createStar(x, y) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.innerHTML = '⭐';
+        star.style.left = `${x}px`;
+        star.style.top = `${y}px`;
+        document.body.appendChild(star);
+
+        // Remove star after animation ends
+        star.addEventListener('animationend', () => star.remove());
+    }
+
+    function handleCoinTap(event) {
+        const { clientX: x, clientY: y } = event;
+        for (let i = 0; i < 3; i++) {
+            createStar(x, y);
+        }
+        balance++;
+        updateBalance();
+        saveState();
+    }
+
+    function switchPage(targetId) {
+        pages.forEach(page => page.classList.remove('active'));
+        document.getElementById(targetId).classList.add('active');
+    }
+
+    function handleSocialLinkClick(linkId) {
+        if (!clickedLinks.has(linkId)) {
+            clickedLinks.add(linkId);
+            balance += 10000;
+            updateBalance();
+            saveState();
+        } else {
+            alert("You've already earned coins from this link!");
+        }
+    }
+
+    coin.addEventListener('click', handleCoinTap);
+
+    document.getElementById('tasks').addEventListener('click', () => switchPage('tasks-page'));
+    document.getElementById('mine').addEventListener('click', () => switchPage('home-page'));
+    document.getElementById('friends').addEventListener('click', () => switchPage('friends-page'));
+    document.getElementById('rank').addEventListener('click', () => switchPage('rank-page'));
+
+    updateBalance();
+});

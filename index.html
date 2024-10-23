@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mautiahjrgang™</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background"></div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Mautiahjrgang™</h1>
+    </div>
+
+    <!-- Statement -->
+    <div class="statement">
+        Maximum coins capped at 100B, Listing 2 weeks after mining the total amount
+    </div>
+
+    <main id="home-page" class="page active">
+        <div class="coin" id="coin">
+            <span>$GANG</span>
+        </div>
+        <div class="coin-balance" id="coin-balance"></div>
+    </main>
+
+    <section id="tasks-page" class="page">
+        <h2>Follow Us and Earn Coins</h2>
+        <ul>
+            <li><a href="#" onclick="handleSocialLinkClick('twitter')">Twitter</a></li>
+            <li><a href="#" onclick="handleSocialLinkClick('instagram')">Instagram</a></li>
+            <li><a href="#" onclick="handleSocialLinkClick('facebook')">Facebook</a></li>
+        </ul>
+    </section>
+
+    <section id="friends-page" class="page">
+        <h2>Your Invited Friends</h2>
+        <ul id="friends-list">
+            <li>John Doe</li>
+            <li>Jane Smith</li>
+        </ul>
+        <p>Your Referral Link: <a href="#">https://example.com/ref/12345</a></p>
+    </section>
+
+    <section id="rank-page" class="page">
+        <h2>Top 100 Users</h2>
+        <ul id="rank-list">
+            <li>User1 - 500000 coins</li>
+            <li>User2 - 450000 coins</li>
+        </ul>
+    </section>
+
+    <div class="bottom-nav">
+        <div class="nav-item" id="mine"><span>⛏️</span> Mine</div>
+        <div class="nav-item" id="friends"><span>🤗</span> Friends</div>
+        <div class="nav-item" id="tasks"><span>💲</span> Tasks</div>
+        <div class="nav-item" id="rank"><span>🪜</span> Ranking</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
